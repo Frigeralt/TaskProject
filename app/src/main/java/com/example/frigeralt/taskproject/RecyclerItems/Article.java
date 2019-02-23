@@ -1,10 +1,10 @@
-package com.example.frigeralt.taskproject;
+package com.example.frigeralt.taskproject.RecyclerItems;
 
 
 public class Article {
-    public String title;
-    public String description;
-    public int imageID;
+    private String title;
+    private String description;
+    private int imageID;
 
     public Article(String title, String description, int imageID) {
         this.title = title;
@@ -22,5 +22,17 @@ public class Article {
 
     public void setImageID(int imageID) {
         this.imageID = imageID;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getImageID() {
+        return imageID;
     }
 }
