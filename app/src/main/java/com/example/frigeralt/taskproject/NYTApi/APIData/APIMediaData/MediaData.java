@@ -5,7 +5,7 @@ import java.util.List;
 public class MediaData {
     String caption;
     String copyright;
-    List<MediaMetadata> mediaMetadata;
+    MediaMetadata[] mediaMetadat = null;
     String subtype;
     String type;
 }

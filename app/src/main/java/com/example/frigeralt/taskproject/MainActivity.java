@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.frigeralt.taskproject.NYTApi.APIData.ArticleData;
+import com.example.frigeralt.taskproject.NYTApi.ApiRequest.Controller;
 import com.example.frigeralt.taskproject.RecyclerItems.Article;
 import com.example.frigeralt.taskproject.RecyclerItems.RecyclerAdapter;
 
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    private Controller controller;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +60,13 @@ public class MainActivity extends AppCompatActivity {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
+
+        // Set up controller for http request
+        controller = new Controller(this);
+        controller.start();
+        ArticleData arrayList = controller.getResponse();
+
 
     }
 

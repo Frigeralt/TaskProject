@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ArticleData {
     String copyright;
-    int num_results;
-    List<ApiResult> results;
+    Long num_results;
+    ApiResult[] results = null;
     String status;
 }

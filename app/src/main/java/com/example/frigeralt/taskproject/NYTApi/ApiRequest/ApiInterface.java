@@ -1,6 +1,6 @@
 package com.example.frigeralt.taskproject.NYTApi.ApiRequest;
 
-import com.example.frigeralt.taskproject.NYTApi.APIData.ApiResult;
+import com.example.frigeralt.taskproject.NYTApi.APIData.ArticleData;
 
 import java.util.List;
 
@@ -12,12 +12,12 @@ import retrofit2.http.Query;
 public interface ApiInterface {
 
     @GET("emailed/{selection}.json")
-    Call<List<ApiResult>> loadEmailed(@Query("api-key") String apiKey, @Path("selection") int selection);
+    Call<ArticleData> loadEmailed(@Path("selection") int selection, @Query("api-key") String apiKey);
 
     @GET("viewed/{selection}.json")
-    Call<List<ApiResult>> loadViewed(@Query("api-key") String apiKey, @Path("selection") int selection);
+    Call<ArticleData> loadViewed(@Path("selection") int selection, @Query("api-key") String apiKey);
 
     @GET("shared/{selection}/facebook.json")
-    Call<List<ApiResult>> loadShared(@Query("api-key") String apiKey, @Path("selection") int selection);
+    Call<ArticleData> loadShared(@Path("selection") int selection, @Query("api-key") String apiKey);
 
 }
