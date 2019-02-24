@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -63,9 +64,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Set up controller for http request
-        controller = new Controller(this);
-        controller.start();
-        ArticleData arrayList = controller.getResponse();
+        try{
+            controller = Controller.getInstance();
+            controller.start();
+            ArticleData arrayList = controller.getResponse();
+            Log.i("DATA", arrayList.copyright);
+        }catch (Exception e){
+            Log.i("EXCEPTION" , e.getLocalizedMessage());
+        }
 
 
     }

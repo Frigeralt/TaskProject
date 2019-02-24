@@ -15,17 +15,29 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * Singleton controller to work with api
+ */
+
 public class Controller implements Callback<ArticleData> {
     private static final String BASE_URL = "https://api.nytimes.com/svc/mostpopular/v2/";
     private static final String API_KEY = "3Q3hQJ19CXrTlFwysRLAqCAxkiG5T1au";
     public static final int SELECTION = 30;
 
-    private ArticleData response;
-    private Context context;
+    private ArticleData serverResponse;
 
-    public Controller(Context context) {
-        this.context = context;
+    private static Controller instance;
+
+    public static synchronized Controller getInstance() {
+        if (instance == null) {
+            instance = new Controller();
+        }
+        return instance;
     }
+
+    private Controller() {
+    }
+
 
     public void start() {
         Gson gson = new GsonBuilder()
@@ -43,17 +55,12 @@ public class Controller implements Callback<ArticleData> {
 
     }
 
-    public ArticleData getResponse() {
-        return response;
-    }
-
     @Override
     public void onResponse(Call<ArticleData> call, Response<ArticleData> response) {
         if (response.isSuccessful()) {
-            this.response = response.body();
-
+            serverResponse = response.body();
         } else {
-            Toast.makeText(context, "Http request error", Toast.LENGTH_SHORT).show();
+            Log.i("FAILDER RESPONSE", response.message());
         }
     }
 

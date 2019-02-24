@@ -3,9 +3,9 @@ package com.example.frigeralt.taskproject.NYTApi.APIData.APIMediaData;
 import java.util.List;
 
 public class MediaData {
-    String caption;
-    String copyright;
-    MediaMetadata[] mediaMetadat = null;
-    String subtype;
-    String type;
+    public String caption;
+    public String copyright;
+    public MediaMetadata[] mediaMetadat = null;
+    public String subtype;
+    public String type;
 }
